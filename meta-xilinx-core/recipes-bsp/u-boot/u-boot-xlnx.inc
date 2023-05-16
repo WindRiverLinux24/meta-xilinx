@@ -43,8 +43,8 @@ PACKAGES =+ "${PN}-bin ${PN}-elf"
 RDEPENDS:${PN} = "${PN}-bin ${PN}-elf"
 ALLOW_EMPTY:${PN} = "1"
 
-SUMMARY:${PN}-bin = "${SUMMARY} - files in .bin format"
-FILES:${PN}-bin = "/boot/u-boot*.bin"
+SUMMARY:${PN}-bin = "${SUMMARY} - files in .bin or .img format"
+FILES:${PN}-bin = "/boot/u-boot*.${UBOOT_SUFFIX}"
 
 SUMMARY:${PN}-elf = "${SUMMARY} - files in .elf format"
 FILES:${PN}-elf = "/boot/u-boot*.elf"
