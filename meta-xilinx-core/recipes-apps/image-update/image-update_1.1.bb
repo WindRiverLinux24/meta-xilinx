@@ -6,7 +6,7 @@ SUMMARY = "Image update is used to update alternate image on compatible firmware
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSES/MIT;md5=2ac09a7a37dd6ee0ba23ce497d57d09b"
 
-BRANCH = "master"
+BRANCH = "xlnx_rel_v2024.1"
 SRC_URI = "git://github.com/Xilinx/linux-image_update.git;branch=${BRANCH};protocol=https"
 SRCREV = "a68308f329578d3585fd335071a9184aa7f46d2e"
 
@@ -16,6 +16,7 @@ S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:zynqmp = "zynqmp"
+COMPATIBLE_MACHINE:versal = "versal"
 
 PACKAGE_ARCH:zynqmp = "${SOC_FAMILY_ARCH}"
 
