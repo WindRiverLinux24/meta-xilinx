@@ -11,7 +11,6 @@ import os
 import logging
 import argparse
 from devtool import setup_tinfoil, parse_recipe, DevtoolError
-import yaml
 import sys
 import glob
 
