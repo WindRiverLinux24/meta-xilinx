@@ -1,17 +1,15 @@
 DEFAULTTUNE ?= "cortexa72-cortexa53"
 SOC_FAMILY ?= "versal"
 
-# Available SOC_VARIANT's for versal:
-# "prime"    - Versal deafult Prime Devices
-# "premium"  - Versal Premium Devices
-# "hbm"      - Versal HMB Devices
-# "ai-core"  - Versal AI-core Devices
-# "ai-edge"  - Versal AI-Edge Devices
-# "net"      - Versal Net Devices
+# Available MACHINE_FETURES for versal processors:
+# prime   - (none)
+# premium - aie
+# hbm     - (none)
+# ai-core - aie, vdu
+# ai-edge - aie, vdu
+# net     - none
 
-SOC_VARIANT ?= "prime"
-
-require xilinx-soc-family.inc
+require conf/machine/include/soc-family.inc
 require soc-tune-include.inc
 
 # Linux Configuration
