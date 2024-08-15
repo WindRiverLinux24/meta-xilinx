@@ -290,7 +290,9 @@ FILES:${PN} = "/boot/*"
 do_deploy() {
     install -d ${DEPLOYDIR}
     install -m 0644 boot.scr ${DEPLOYDIR}/${UBOOTSCR_BASE_NAME}.scr
-    install -m 0644 boot.scr ${DEPLOYDIR}/
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'ostree', 'false', 'true', d)}; then
+        install -m 0644 boot.scr ${DEPLOYDIR}/
+    fi
     install -d ${DEPLOYDIR}/pxeboot/${UBOOTPXE_CONFIG_NAME}
     install -m 0644 pxeboot.pxe ${DEPLOYDIR}/pxeboot/${UBOOTPXE_CONFIG_NAME}/default
     install -d ${DEPLOYDIR}/${UBOOTPXE_CONFIG}/
