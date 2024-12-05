@@ -281,7 +281,9 @@ do_compile() {
 do_install() {
     install -d ${D}/boot
     install -m 0644 boot.scr ${D}/boot/${UBOOTSCR_BASE_NAME}.scr
-    install -m 0644 boot.scr ${D}/boot/
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'ostree', 'false', 'true', d)}; then
+        install -m 0644 boot.scr ${D}/boot/
+    fi
     install -d ${D}/boot/pxeboot/${UBOOTPXE_CONFIG_NAME}
     install -m 0644 pxeboot.pxe ${D}/boot/pxeboot/${UBOOTPXE_CONFIG_NAME}/default
     install -d ${D}/boot/${UBOOTPXE_CONFIG}/
