@@ -15,4 +15,5 @@ require ${UBOOT_MB_INC}
 
 FILESEXTRAPATHS:prepend := "${COREBASE}/meta/recipes-bsp/u-boot/files:"
 SRC_URI += "file://CVE-2024-57254.patch \
+            file://CVE-2024-57255.patch \
 "
