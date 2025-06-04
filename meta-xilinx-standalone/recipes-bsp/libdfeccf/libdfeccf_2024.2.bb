@@ -8,8 +8,6 @@ REQUIRED_MACHINE_FEATURES = "rfsoc"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-S = "${WORKDIR}/git"
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "libmetal"
@@ -20,7 +18,7 @@ DFECCF_SUBDIR = "XilinxProcessorIPLib/drivers/dfeccf/src"
 
 do_compile:prepend() {
     cd ${S}/${DFECCF_SUBDIR}
-    cp Makefile.Linux Makefile
+    install Makefile.Linux Makefile
 }
 
 do_install() {
