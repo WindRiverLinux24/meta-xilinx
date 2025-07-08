@@ -1,0 +1,37 @@
+From 63d4e09d103cc6705e4ba0faf90e749a86a6a98a Mon Sep 17 00:00:00 2001
+From: Quanyang Wang <quanyang.wang@windriver.com>
+Date: Mon, 24 Mar 2025 11:03:22 +0800
+Subject: [PATCH] fix argument issue for of_property_for_each_u32
+
+After the backport of mainline commit 9722c3b66e21 ("of: remove
+internal arguments from of_property_for_each_u32()") to linux-yocto-6.6,
+the argument count is reduced from 5 to 3 even LINUX_VERSION_CODE is
+less than KERNEL_VERSION(6,11,0), so we need to adjust this in
+the out-of-tree source code of mali driver.
+
+Upstream-Status: Inappropriate [WRLinux Specific]
+
+Signed-off-by: Quanyang Wang <quanyang.wang@windriver.com>
+---
+ driver/src/devicedrv/mali/linux/mali_osk_mali.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux/mali_osk_mali.c b/mali_osk_mali.c
+index 3f66132..d8a446f 100644
+--- a/linux/mali_osk_mali.c
++++ b/linux/mali_osk_mali.c
+@@ -240,11 +240,7 @@ void _mali_osk_device_data_pmu_config_get(u16 *domain_config_array, int array_si
+ 		return;
+ 	}
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,11,0)
+ 	of_property_for_each_u32(node, "pmu_domain_config", u) {
+-#else
+-    of_property_for_each_u32(node, "pmu_domain_config", prop, p, u) {
+-#endif
+ 		domain_config_array[i] = (u16)u;
+ 		i++;
+ 	}
+-- 
+2.40.0
+
